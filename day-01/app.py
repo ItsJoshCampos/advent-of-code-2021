@@ -48,5 +48,8 @@ def problem_2(depths):
     return count
 
 
-print(problem_1(int_list))
-print(problem_2(int_list))
+answer_1 = problem_1(int_list)
+answer_2 = problem_2(int_list)
+
+print(f'Answer 1: {answer_1}')
+print(f'Answer 2: {answer_2}')
