@@ -1,9 +1,12 @@
+from aocd.models import Puzzle
+puzzle = Puzzle(year=2021, day=1)
 
-with open('input.txt', 'r') as r:
-    lines = r.readlines()
+# Option to read from input file
+# with open('input.txt', 'r') as r:
+#     lines = r.readlines()
 
 # Set as list of integers
-int_list = list(map(int, lines))
+int_list = list(map(int, puzzle.input_data.splitlines()))
 
 
 def problem_1(depths):
