@@ -3,6 +3,7 @@ puzzle = Puzzle(year=2021, day=3)
 
 
 def problem_1(lines):
+	print('Problem 1')
 	row_count = len(lines.split())
 	index_count = len(lines.split()[0])
 	print(f'Row count: { row_count }')
@@ -56,4 +57,61 @@ def problem_1(lines):
 	print(f'Power Consumption: { power_consuption }')
 
 
+
+
+def solve_o2(lines, index):
+
+	if len(lines) == 1 :
+		print(lines[0])
+		return int(lines[0], 2)
+	else:
+		number_of_ones = 0
+		for line in lines:
+			if line[index] == '1':
+				number_of_ones+=1
+
+		if number_of_ones < len(lines) - number_of_ones:
+			new_list = [l for l in lines if l[index] == '0']
+			return solve_o2(new_list, index+1)
+		else:
+			new_list = [l for l in lines if l[index] == '1']
+			return solve_o2(new_list, index+1)
+
+def solve_co2(lines, index):
+
+	if len(lines) == 1 :
+		print(lines[0])
+		return int(lines[0], 2)
+	else:
+		number_of_ones = 0
+		for line in lines:
+			if line[index] == '1':
+				number_of_ones+=1
+
+		if number_of_ones < len(lines) - number_of_ones:
+			new_list = [l for l in lines if l[index] == '1']
+			return solve_co2(new_list, index+1)
+		else:
+			new_list = [l for l in lines if l[index] == '0']
+			return solve_co2(new_list, index+1)
+
+
+
+def problem_2(lines):
+	print('\nProblem 2')
+	row_count = len(lines.split())
+	index_count = len(lines.split()[0])
+	print(f'Row count: { row_count }')
+	print(f'Indexes: { index_count }')
+
+	o2_rating = solve_o2(lines.split(), 0)
+	co2_rating = solve_co2(lines.split(), 0)
+	print(f'o2 rating: { o2_rating }')
+	print(f'co2_rating: { co2_rating }')
+	print(f'Life support rating: { o2_rating * co2_rating }')
+
+
+
+
 problem_1(puzzle.input_data)
+problem_2(puzzle.input_data)
